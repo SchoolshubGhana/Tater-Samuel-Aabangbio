@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SchoolHub Ghana | Smart School Management</title>
+
+<meta name="description" content="SchoolHub Ghana is a modern school management platform for Creche, Nursery, Primary, JHS and other educational institutions.">
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: #172033;
+    background: #f7f9fc;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    width: 92%;
+    max-width: 1150px;
+    margin: auto;
+}
+
+/* NAVIGATION */
+header {
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.nav {
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: 800;
+    color: #0b5cab;
+}
+
+.logo span {
+    color: #10a36a;
+}
+
+.nav-links {
+    display: none;
+}
+
+.nav-button {
+    background: #0b5cab;
+    color: white;
+    padding: 11px 17px;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+/* HERO */
+.hero {
+    background: linear-gradient(135deg, #eef7ff, #ffffff);
+    padding: 75px 0;
+}
+
+.hero-grid {
+    display: grid;
+    gap: 40px;
+    align-items: center;
+}
+
+.badge {
+    display: inline-block;
+    background: #e4f1ff;
+    color: #0b5cab;
+    padding: 8px 13px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #0b5cab;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #596579;
+    margin-bottom: 28px;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 20px;
+    border-radius: 9px;
+    font-weight: 700;
+}
+
+.btn-primary {
+    background: #0b5cab;
+    color: white;
+}
+
+.btn-secondary {
+    background: white;
+    color: #0b5cab;
+    border: 1px solid #d5dfeb;
+}
+
+.dashboard {
+    background: white;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 18px 45px rgba(20,55,90,0.13);
+}
+
+.dashboard-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.dashboard-title {
+    font-weight: 800;
+}
+
+.status {
+    color: #10a36a;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.stat {
+    padding: 17px;
+    background: #f5f8fc;
+    border-radius: 12px;
+}
+
+.stat strong {
+    display: block;
+    font-size: 25px;
+    color: #0b5cab;
+}
+
+.stat small {
+    color: #687386;
+}
+
+/* SECTIONS */
+section {
+    padding: 75px 0;
+}
+
+.section-heading {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 45px;
+}
+
+.section-heading h2 {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.section-heading p {
+    color: #687386;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(30,50,80,0.06);
+    border: 1px solid #edf1f6;
+}
+
+.icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 11px;
+    background: #eaf4ff;
+    color: #0b5cab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    margin-bottom: 17px;
+}
+
+.card h3 {
+    margin-bottom: 8px;
+}
+
+.card p {
+    color: #687386;
+}
+
+/* STEPS */
+.steps {
+    display: grid;
+    gap: 18px;
+}
+
+.step {
+    background: white;
+    border-radius: 15px;
+    padding: 24px;
+    border: 1px solid #e8edf4;
+}
+
+.step-number {
+    font-size: 14px;
+    font-weight: 800;
+    color: #0b5cab;
+    margin-bottom: 8px;
+}
+
+/* AUDIENCE */
+.audience {
+    background: #0c3155;
+    color: white;
+}
+
+.audience .section-heading p {
+    color: #c9d7e5;
+}
+
+.audience .card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+}
+
+.audience .card p {
+    color: #d5e0eb;
+}
+
+/* PRICING */
+.pricing-box {
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    padding: 35px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(20,40,70,0.08);
+}
+
+.pricing-box h3 {
+    font-size: 25px;
+    margin-bottom: 12px;
+}
+
+.pricing-box p {
+    color: #687386;
+    margin-bottom: 23px;
+}
+
+/* FAQ */
+.faq {
+    max-width: 800px;
+    margin: auto;
+}
+
+.faq-item {
+    background: white;
+    margin-bottom: 12px;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #e7ecf2;
+}
+
+.faq-item h3 {
+    font-size: 17px;
+    margin-bottom: 7px;
+}
+
+.faq-item p {
+    color: #687386;
+}
+
+/* CONTACT */
+.contact {
+    background: #eef6ff;
+}
+
+.contact-box {
+    max-width: 700px;
+    margin: auto;
+    text-align: center;
+}
+
+.contact-box p {
+    color: #647083;
+    margin-bottom: 25px;
+}
+
+.contact-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+}
+
+/* FOOTER */
+footer {
+    background: #091b2e;
+    color: white;
+    padding: 40px 0;
+}
+
+.footer-content {
+    text-align: center;
+}
+
+.footer-content p {
+    color: #aebdca;
+    margin-top: 8px;
+}
+
+.footer-contact {
+    margin-top: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.footer-contact a {
+    color: #dce8f2;
+}
+
+/* DESKTOP */
+@media (min-width: 768px) {
+
+    .nav-links {
+        display: flex;
+        gap: 25px;
+        align-items: center;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1.1fr 0.9fr;
+    }
+
+    .hero h1 {
+        font-size: 58px;
+    }
+
+    .cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .steps {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stats {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container nav">
+
+<a href="#" class="logo">SchoolHub <span>Ghana</span></a>
+
+<nav class="nav-links">
+<a href="#features">Features</a>
+<a href="#how">How It Works</a>
+<a href="#schools">Who It's For</a>
+<a href="#pricing">Pricing</a>
+<a href="#faq">FAQ</a>
+</nav>
+
+<a href="#contact" class="nav-button">Request Demo</a>
+
+</div>
+</header>
+
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+<div class="container hero-grid">
+
+<div>
+<span class="badge">MODERN SCHOOL MANAGEMENT PLATFORM</span>
+
+<h1>
+Smart Technology for
+<span>Better School Management.</span>
+</h1>
+
+<p>
+SchoolHub Ghana helps schools manage students, teachers, attendance,
+fees, expenses, academic results, reports and other school records
+from one modern platform.
+</p>
+
+<div class="buttons">
+<a href="#contact" class="btn btn-primary">Request a Demo</a>
+<a href="#features" class="btn btn-secondary">Explore Features</a>
+</div>
+</div>
+
+<div class="dashboard">
+
+<div class="dashboard-top">
+<div class="dashboard-title">School Dashboard</div>
+<div class="status">● System Active</div>
+</div>
+
+<div class="stats">
+
+<div class="stat">
+<strong>Students</strong>
+<small>Manage student records</small>
+</div>
+
+<div class="stat">
+<strong>Teachers</strong>
+<small>Manage staff information</small>
+</div>
+
+<div class="stat">
+<strong>Fees</strong>
+<small>Track school payments</small>
+</div>
+
+<div class="stat">
+<strong>Reports</strong>
+<small>Access school records</small>
+</div>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- FEATURES -->
+<section id="features">
+
+<div class="container">
+
+<div class="section-heading">
+<h2>Everything Your School Needs</h2>
+<p>
+Bring important school management activities together in one organized platform.
+</p>
+</div>
+
+<div class="cards">
+
+<div class="card">
+<div class="icon">01</div>
+<h3>Student Management</h3>
+<p>Manage student profiles, photographs, IDs, classes, guardians and academic records.</p>
+</div>
+
+<div class="card">
+<div class="icon">02</div>
+<h3>Teacher Management</h3>
+<p>Organize teacher profiles, classes, assignments and staff information.</p>
+</div>
+
+<div class="card">
+<div class="icon">03</div>
+<h3>Attendance</h3>
+<p>Record and monitor student attendance in an organized way.</p>
+</div>
+
+<div class="card">
+<div class="icon">04</div>
+<h3>Fees & Payments</h3>
+<p>Keep track of school fees, payments and outstanding balances.</p>
+</div>
+
+<div class="card">
+<div class="icon">05</div>
+<h3>Expenses</h3>
+<p>Record school expenses and maintain better financial records.</p>
+</div>
+
+<div class="card">
+<div class="icon">06</div>
+<h3>Academic Results</h3>
+<p>Manage academic results and keep student performance records organized.</p>
+</div>
+
+<div class="card">
+<div class="icon">07</div>
+<h3>Reports & Records</h3>
+<p>Access useful school information and generate organized records.</p>
+</div>
+
+<div class="card">
+<div class="icon">08</div>
+<h3>Payroll</h3>
+<p>Organize staff payroll information and related records.</p>
+</div>
+
+<div class="card">
+<div class="icon">09</div>
+<h3>CSV Import & Export</h3>
+<p>Move large amounts of school data efficiently using CSV files.</p>
+</div>
+
+<div class="card">
+<div class="icon">10</div>
+<h3>Dashboard & Statistics</h3>
+<p>See important school information from a centralized dashboard.</p>
+</div>
+
+<div class="card">
+<div class="icon">11</div>
+<h3>User Roles</h3>
+<p>Give administrators, teachers and accountants access appropriate to their responsibilities.</p>
+</div>
+
+<div class="card">
+<div class="icon">12</div>
+<h3>Multi-School Architecture</h3>
+<p>Support multiple independent schools while keeping their records separated.</p>
+</div>
+
+</div>
+</div>
+
+</section>
+
+
+<!-- HOW IT WORKS -->
+<section id="how">
+
+<div class="container">
+
+<div class="section-heading">
+<h2>How SchoolHub Ghana Works</h2>
+<p>A structured process from registration to installation.</p>
+</div>
+
+<div class="steps">
+
+<div class="step">
+<div class="step-number">STEP 01</div>
+<h3>School Registration</h3>
+<p>Your school submits its information to get started.</p>
+</div>
+
+<div class="step">
+<div class="step-number">STEP 02</div>
+<h3>Approval</h3>
+<p>The school is reviewed and approved before activation.</p>
+</div>
+
+<div class="step">
+<div class="step-number">STEP 03</div>
+<h3>Subscription & Activation</h3>
+<p>Subscription arrangements are completed and the school account is activated.</p>
+</div>
+
+<div class="step">
+<div class="step-number">STEP 04</div>
+<h3>Installation & Setup</h3>
+<p>The system is configured for the school and staff can begin using it.</p>
+</div>
+
+</div>
+</div>
+
+</section>
+
+
+<!-- WHO IT'S FOR -->
+<section id="schools" class="audience">
+
+<div class="container">
+
+<div class="section-heading">
+<h2>Built for Educational Institutions</h2>
+<p>
+SchoolHub Ghana is designed for schools with different levels and administrative needs.
+</p>
+</div>
+
+<div class="cards">
+
+<div class="card">
+<h3>Creche & Nursery</h3>
+<p>Organize young learners' records, classes, guardians and school information.</p>
+</div>
+
+<div class="card">
+<h3>Primary Schools</h3>
+<p>Manage students, teachers, attendance, fees, results and administrative records.</p>
+</div>
+
+<div class="card">
+<h3>JHS</h3>
+<p>Support academic and administrative management for Junior High Schools.</p>
+</div>
+
+<div class="card">
+<h3>Other Institutions</h3>
+<p>The platform can be configured to support other educational institutions and school structures.</p>
+</div>
+
+</div>
+</div>
+
+</section>
+
+
+<!-- MULTI SCHOOL -->
+<section>
+
+<div class="container">
+
+<div class="section-heading">
+<h2>Designed for Multiple Schools</h2>
+<p>
+SchoolHub Ghana uses a multi-school structure so different schools can operate on the same platform.
+</p>
+</div>
+
+<div class="card" style="max-width:850px;margin:auto;text-align:center;">
+
+<h3>School Data Isolation</h3>
+
+<p>
+Each school's records are associated with the correct school.
+Users are given access according to their school and role,
+helping prevent one school's students, teachers, fees, attendance,
+results or financial records from being accessed by another school.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- PRICING -->
+<section id="pricing">
+
+<div class="container">
+
+<div class="section-heading">
+<h2>Subscription</h2>
+<p>
+SchoolHub Ghana is offered through a school subscription model.
+</p>
+</div>
+
+<div class="pricing-box">
+
+<h3>Flexible School Subscription</h3>
+
+<p>
+Subscription details can vary depending on the school's requirements,
+number of users and selected services.
+</p>
+
+<a href="#contact" class="btn btn-primary">
+Contact Us for Current Subscription Details
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FAQ -->
+<section id="faq">
+
+<div class="container">
+
+<div class="section-heading">
+<h2>Frequently Asked Questions</h2>
+<p>Answers to common questions about SchoolHub Ghana.</p>
+</div>
+
+<div class="faq">
+
+<div class="faq-item">
+<h3>What is SchoolHub Ghana?</h3>
+<p>SchoolHub Ghana is a modern school management platform designed to help educational institutions organize their administrative and academic records.</p>
+</div>
+
+<div class="faq-item">
+<h3>What schools can use it?</h3>
+<p>It is designed for Creche, Nursery, Primary, JHS and other educational institutions.</p>
+</div>
+
+<div class="faq-item">
+<h3>Can multiple schools use the platform?</h3>
+<p>Yes. The platform is designed around a multi-school architecture where each school's records are separated.</p>
+</div>
+
+<div class="faq-item">
+<h3>Can different staff have different access?</h3>
+<p>Yes. User roles and permissions can be used to control access according to responsibilities.</p>
+</div>
+
+<div class="faq-item">
+<h3>Can schools manage student photographs and IDs?</h3>
+<p>Yes. Student management can include photographs, student IDs and other profile information.</p>
+</div>
+
+<div class="faq-item">
+<h3>Can schools manage fees?</h3>
+<p>Yes. The platform includes fee and payment management functionality.</p>
+</div>
+
+<div class="faq-item">
+<h3>Can schools manage expenses?</h3>
+<p>Yes. School expenses can be recorded and organized.</p>
+</div>
+
+<div class="faq-item">
+<h3>Can schools manage academic results?</h3>
+<p>Yes. Academic results and student performance records can be managed.</p>
+</div>
+
+<div class="faq-item">
+<h3>How do I get started?</h3>
+<p>Contact SchoolHub Ghana to discuss your school, request a demonstration and begin the registration process.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+
+<div class="container">
+
+<div class="contact-box">
+
+<div class="section-heading">
+<h2>Ready to Explore SchoolHub Ghana?</h2>
+<p>
+Contact us to request a demonstration or discuss how SchoolHub Ghana
+can support your school's management needs.
+</p>
+</div>
+
+<div class="contact-buttons">
+
+<a class="btn btn-primary"
+href="https://wa.me/233538295175"
+target="_blank">
+Chat on WhatsApp
+</a>
+
+<a class="btn btn-secondary"
+href="tel:+233505124220">
+Call 0505124220
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+<div class="container footer-content">
+
+<h2>SchoolHub Ghana</h2>
+
+<p>Smart Technology for Better School Management.</p>
+
+<div class="footer-contact">
+
+<a href="tel:+233505124220">0505124220</a>
+
+<a href="https://wa.me/233538295175" target="_blank">
+WhatsApp: 0538295175
+</a>
+
+</div>
+
+<p style="margin-top:25px;">
+© 2026 SchoolHub Ghana. All rights reserved.
+</p>
+
+</div>
+
+</footer>
+
+</body>
+  </html>
